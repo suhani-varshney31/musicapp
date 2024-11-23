@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Student
+from .models import Student,Song
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -12,5 +12,9 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
     password = serializers.CharField(write_only=True, required=True)
 
-class PlaySongSerializer(serializers.Serializer):
-    song_id = serializers.IntegerField(required=True)
+class SongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Song
+        fields = ['title','artists','genre','album_or_movie','user_rating']
+
+

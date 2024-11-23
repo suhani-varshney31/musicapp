@@ -16,13 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from musicapp.views import StudentApi,LoginAPI,SignupAPI,PlaySongAPI 
+from musicapp.views import StudentApi,LoginAPI,SignupAPI,SearchSongAPI,UploadSongsCSVAPI,RecommendSongsAPI,AddFavoriteSongAPI,GetNextSongAPI
+
 
 urlpatterns = [
     path('student/', StudentApi.as_view()),
     path('login/', LoginAPI.as_view()),
     path('admin/', admin.site.urls),
     path('signup/', SignupAPI.as_view()),
-    path('play/', PlaySongAPI.as_view()),
-    path('play/<int:song_id>/', PlaySongAPI.as_view(), name='play-song'),
+    path('upload-songs-csv/', UploadSongsCSVAPI.as_view(), name='upload-songs-csv'),
+    path('search-song/', SearchSongAPI.as_view(), name='search-song'), 
+    path('recommend/', RecommendSongsAPI.as_view(), name='recommend-songs-api'),
+    path('add_favorite/', AddFavoriteSongAPI.as_view(), name='add-favorite-song-api'),
+    path('next_song/', GetNextSongAPI.as_view(), name='get-next-song-api'),
+    
+   
 ]
