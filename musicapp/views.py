@@ -1,4 +1,6 @@
 import requests
+
+
 from django.db.models import Q
 from django.shortcuts import render
 import csv
@@ -170,6 +172,10 @@ class SearchSongAPI(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
         search_query = Q(title__icontains=query) | Q(artists__icontains=query)
         songs =  Song.objects.filter(search_query)
+
+        print(f"Query: {query}")  
+        print(f"Songs found: {songs}")
+        
         serializer = SongSerializer(songs, many=True)
 
         return Response({
