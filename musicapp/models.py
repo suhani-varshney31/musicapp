@@ -17,6 +17,7 @@ class Song(models.Model):
     genre = models.CharField(max_length=100)
     album_or_movie = models.CharField(max_length=255, null=True, blank=True)
     user_rating = models.CharField(max_length=10, null=True, blank=True) 
+    url = models.URLField(max_length=500, null=True, blank=True) 
 
 
     def __str__(self):

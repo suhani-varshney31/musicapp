@@ -213,6 +213,7 @@ class UploadSongsCSVAPI(APIView):
                             "genre": row.get("Genre", ""),
                             "album_or_movie": row.get("Album/Movie", ""),
                             "user_rating": row.get("User-Rating", None),
+                             
                         },
                     )
                     if created:

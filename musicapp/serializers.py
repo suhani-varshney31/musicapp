@@ -15,6 +15,10 @@ class LoginSerializer(serializers.Serializer):
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ['title','artists','genre','album_or_movie','user_rating']
+        fields = ['title','artists','genre','album_or_movie','user_rating','url']
 
+        def validate_url(self, value):
+            if value and not value.startswith(('http://', 'https://')):
+               raise serializers.ValidationError("The URL must start with http:// or https://.")
+            return value
 
